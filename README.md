@@ -6,10 +6,10 @@ Slackcat is a simple commandline utility to post snippets to Slack.
 
 
 ## Installing
-Download the latest release for your platform:
+Download the [latest release](https://github.com/bcicen/slackcat/releases) for your platform:
 
 ```bash
-curl -Lo slackcat https://github.com/bcicen/slackcat/releases/download/v1.6/slackcat-1.6-$(uname -s)-amd64
+curl -Lo slackcat https://github.com/bcicen/slackcat/releases/download/1.7.2/slackcat-1.7.2-$(uname -s)-amd64
 sudo mv slackcat /usr/local/bin/
 sudo chmod +x /usr/local/bin/slackcat
 ```
@@ -25,6 +25,13 @@ To optionally build `slackcat` from source, ensure you have [dep](https://github
 go get github.com/bcicen/slackcat && \
 cd $GOPATH/src/github.com/bcicen/slackcat && \
 make build
+```
+
+You must use GNU make for the build to work correctly. If your platform does not install GNU make as `make` (i.e. OpenBSD) then you will need to install gmake and run:
+```
+go get github.com/bcicen/slackcat && \
+cd $GOPATH/src/github.com/bcicen/slackcat && \
+gmake build
 ```
 
 ## Configuration
@@ -72,3 +79,4 @@ Option | Description
 --filetype | Specify filetype for syntax highlighting. Defaults to autodetect
 --comment | Initial comment for snippet
 --username | Stream messages as given bot user. Defaults to auth user
+--thread | Stream messages to thread after initial comment message
