@@ -49,7 +49,7 @@ func listIms() (names []string) {
 	failOnError(err)
 	for _, c := range list {
 		for _, u := range users {
-			if u.Id == c.User {
+			if u.ID == c.User {
 				names = append(names, u.Profile.RealName)
 
 				continue
@@ -61,11 +61,11 @@ func listIms() (names []string) {
 
 // Lookup Slack id for im by real name
 func findImByRealName(realName string) string {
-	users, err := api.UsersList()
+	users, err := api.GetUsers()
 	failOnError(err)
 	for _, u := range users {
 		if u.Profile.RealName == realName {
-			return u.Id
+			return u.ID
 		}
 	}
 	exitErr(fmt.Errorf("No such channel, group, or im"))
